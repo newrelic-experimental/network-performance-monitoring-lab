@@ -1,0 +1,6 @@
+version: "2"
+virtualmachines:
+- name: host
+  image: nrge-316315/network-performance-monitoring-instruqt
+  shell: /bin/bash
+  machine_type: n1-standard-1

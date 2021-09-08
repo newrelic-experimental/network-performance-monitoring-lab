@@ -1,0 +1,3 @@
+#!/bin/bash
+ip=$(docker container inspect knetflow | jq -r .[0].NetworkSettings.Networks.testnet.IPAMConfig.IPv4Address)
+docker run -itd --net=testnet --rm networkstatic/nflow-generator -t $ip -p 9995

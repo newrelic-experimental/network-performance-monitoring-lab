@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Verify that snmp-base.yaml exists
+if [ ! -f /root/snmp-base.yaml ]; then
+    fail-message "No file was found at /root/snmp-base.yaml"
+fi
