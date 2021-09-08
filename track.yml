@@ -320,9 +320,9 @@ challenges:
   teaser: Add a dashboard to monitor your network
   notes:
   - type: text
-    contents: New Relic is a programmable platform with a catalog of cool apps and custom visualizations you can add to your account. You can even create some yourself!
+    contents: New Relic is a programmable platform with a catalog of apps and custom visualizations you can add to your account. You can even [create some yourself](https://developer.newrelic.com/build-apps/build-hello-world-app/)!
   - type: text
-    contents: One package of useful tools is called **Quickstart**, which contains a bunch of dashboards created by New Relic to help you hit the ground running with data visualizations. You'll add one of these to your account in this challenge to monitor your network devices.
+    contents: One package of useful tools is called **Quickstarts**, which contains a bunch of dashboards created by New Relic to help you hit the ground running with data visualizations. You'll add one of these to your account in this challenge to monitor your network devices.
   assignment: |-
     Instead of querying and creating visualizations for your network devices by hand, you're going to use a dashboard that we created for you.
 
@@ -345,6 +345,34 @@ challenges:
     Navigate to **Dashboards** to find your new dashboard:
 
     Open your dashboard to find some prebuilt charts already populated with your network device data:
+  tabs:
+  - title: Website
+    type: external
+    url: https://one.newrelic.com/launcher/nr1-core.explorer?pane=eyJuZXJkbGV0SWQiOiJoaWdoLWRlbnNpdHktdmlldy5ob21lIiwiZmF2b3JpdGVzIjp7InNlbGVjdGVkIjp0cnVlLCJ2aXNpYmxlIjp0cnVlfSwibGFzdFZpZXdlZCI6eyJzZWxlY3RlZCI6ZmFsc2UsInZpc2libGUiOnRydWV9fQ==
+  - title: Terminal
+    type: terminal
+    hostname: host
+- slug: add-alerts
+  type: challenge
+  title: Add alerts
+  teaser: Add alert policies to notify you when your devices have issues
+  assignment: |-
+    From the **Website** tab, open New Relic in an external window and click **Create a workload**:
+- slug: add-workload
+  type: challenge
+  title: Add a workload
+  teaser: Add a workload to group your device entities
+  notes:
+  - type: text
+    contents: You use New Relic workloads to group conceptually, geographically, or physically similar entities to provide better insights into how their performing in relation to one another. In this challenge, you create a workload for your network devices.
+  assignment: |-
+    From the **Website** tab, open New Relic in an external window and click **Create a workload**:
+
+    Name your workload, select all 15 entities that represent devices on your network, and click **Create a workload**:
+
+    In your workload, you'll find the switch, router, and flow device entities that represent your network:
+
+    The workloads view provides new insights, such as a workload status, health over time, and an errors inbox:
   tabs:
   - title: Website
     type: external
