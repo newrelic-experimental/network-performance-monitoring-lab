@@ -376,10 +376,10 @@ challenges:
   title: Add alerts
   teaser: Add alert policies to notify you when your devices have issues
   notes:
-    - type: text
-      contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. However, when something goes wrong it's helpful to be notified about the issue, and a dashboard won't do that for you.
-    - type: text
-      contents: You use alerts to be notified when your data starts to show problem signs. For your network devices, you'll create an alert policy to send you an email when the poll rate for interface metrics drops too low.
+  - type: text
+    contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. However, when something goes wrong it's helpful to be notified about the issue, and a dashboard won't do that for you.
+  - type: text
+    contents: You use alerts to be notified when your data starts to show problem signs. For your network devices, you'll create an alert policy to send you an email when the poll rate for interface metrics drops too low.
   assignment: |-
     ## Create an alert condition
 
@@ -457,7 +457,7 @@ challenges:
   difficulty: basic
   timelimit: 600
 - slug: alert-condition-violation
-  id: q6cxpwyo7kvy
+  id: qzhmhbltrwam
   type: challenge
   title: Observe your device issue
   teaser: Observe your alert condition violation
@@ -522,4 +522,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 2000
-checksum: "8602429315780968557"
+checksum: "12458591938248023408"
