@@ -375,7 +375,14 @@ challenges:
   type: challenge
   title: Add alerts
   teaser: Add alert policies to notify you when your devices have issues
+  notes:
+    - type: text
+      contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. However, when something goes wrong it's helpful to be notified about the issue, and a dashboard won't do that for you.
+    - type: text
+      contents: You use alerts to be notified when your data starts to show problem signs. For your network devices, you'll create an alert policy to send you an email when the poll rate for interface metrics drops too low.
   assignment: |-
+    ## Create an alert condition
+
     From the **Website** tab, open New Relic in an external window and click **Alerts & AI**:
 
     ![Navigate to alerts and AI](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-alerts.png)
@@ -421,14 +428,75 @@ challenges:
     Save the alert condition:
 
     ![Add a threshold](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/threshold.png)
+
+    Now, you've created an alert condition for when the poll rate for interface metrics drops below 0.01 for one minute. To receive alerts when your data violates this condition, create a notification channel.
+
+    ## Create an alert notification channel
+
+    From the left-hand menu, select **Notification channels**:
+
+    ![Navigate to notification channels](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-channels.png)
+
+    Click **New notification channel**:
+
+    ![New notification channel](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/new-channel.png)
+
+    Select email for the type and enter your email in the text field:
+
+    ![Email notification channel](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/email-channel.png)
+
+    In the left-hand menu, navigate back to **Policies** and select your new policy:
+
+    ![Select your policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/select-policy.png)
+
+    Under **Notification channels**, click **Add notification channels**:
+
+    ![Add your channel to your policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/add-channel.png)
+
+    Find your email channel and update your policy.
   difficulty: basic
   timelimit: 600
+- slug: alert-condition-violation
+  id: q6cxpwyo7kvy
+  type: challenge
+  title: Observe your device issue
+  teaser: Observe your alert condition violation
+  notes:
+  - type: text
+    contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute. Now, it's time to see what happens if one of your network devices violates that condition.
+  assignment: |-
+    You should have received an email from New Relic that the alert condition you created in the last challenge was violated. That's because one of your network devices stopped responding for a period of time.
+
+    From the **Website** tab, open New Relic in an external window and click **Alerts & AI**:
+
+    ![Navigate to alerts and AI](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-alerts.png)
+
+    Under **ALERTS** in the left-hand menu, click **Policies**:
+
+    ![Navigate to policies](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-policies.png)
+
+    Select your policy:
+
+    ![Select your policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/select-policy.png)
+
+    Select your condition and see the red box representing the time where the device data violated the condition you created.
+  tabs:
+  - title: Website
+    type: external
+    url: https://one.newrelic.com/launcher/nr1-core.explorer?pane=eyJuZXJkbGV0SWQiOiJoaWdoLWRlbnNpdHktdmlldy5ob21lIiwiZmF2b3JpdGVzIjp7InNlbGVjdGVkIjp0cnVlLCJ2aXNpYmxlIjp0cnVlfSwibGFzdFZpZXdlZCI6eyJzZWxlY3RlZCI6ZmFsc2UsInZpc2libGUiOnRydWV9fQ==
+  - title: Terminal
+    type: terminal
+    hostname: host
+  difficulty: basic
+  timelimit: 2000
 - slug: add-workload
   id: q6cxpwyo7kvy
   type: challenge
   title: Add a workload
   teaser: Add a workload to group your device entities
   notes:
+  - type: text
+    contents: You've created a dashboard and an alert policy to monitor your data and be notified when that data looks wrong. Next, you learn of a new way to group your device entities in New Relic, called workloads.
   - type: text
     contents: You use New Relic workloads to group conceptually, geographically, or physically similar entities to provide better insights into how their performing in relation to one another. In this challenge, you create a workload for your network devices.
   assignment: |-
@@ -454,4 +522,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 2000
-checksum: "13848355984459657976"
+checksum: "8602429315780968557"
