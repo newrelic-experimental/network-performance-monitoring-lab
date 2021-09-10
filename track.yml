@@ -459,8 +459,8 @@ challenges:
 - slug: alert-condition-violation
   id: qzhmhbltrwam
   type: challenge
-  title: Observe your device issue
-  teaser: Observe your alert condition violation
+  title: Respond to alerts from your network
+  teaser: Observe alert condition violations and respond to incidents
   notes:
   - type: text
     contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute. Now, it's time to see what happens if one of your network devices violates that condition.
@@ -522,4 +522,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 2000
-checksum: "12458591938248023408"
+checksum: "3821492008295612675"
