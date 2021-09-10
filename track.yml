@@ -1,8 +1,8 @@
-slug: prototype-network-performance-monitoring
+slug: network-performance-monitoring
 id: ljugkngbqdhs
 type: track
-title: <prototype> Network Performance Monitoring
-teaser: A short description of the track.
+title: Network Performance Monitoring
+teaser: Use ktranslate to discover your network devices, gather data, and send that data to New Relic. Then use New Relic to observe your network devices with a dashboard, an alert, and a workload.
 description: |-
   ## Overview
 
@@ -51,7 +51,7 @@ challenges:
       docker ps
       ```
   - type: text
-    contents: Kentik created ktranslate to help you find network devices, receive data, and send that data to some output. In this lab, you'll use ktranslate to instrument your network. Read [its documentation](https://github.com/kentik/ktranslate) to learn how it works.
+    contents: Kentik created ktranslate to help you find network devices, receive data, and send that data to some output. In this lab, you'll use ktranslate to instrument your network and send data to your New Relic account. Read [its documentation](https://github.com/kentik/ktranslate) to learn how it works.
   assignment: |-
     Before you can discover your network devices with ktranslate, you need to configure some settings.
 
@@ -78,7 +78,7 @@ challenges:
     -rw-r--r--
     ```
 
-    To allow other containers to write to this configuration file, you need to update the "other" file permission scope:
+    To allow other containers to write to this configuration file, update the "other" file permission scope:
 
     ```
     chmod 646 snmp-base.yaml
@@ -90,7 +90,7 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 600
 - slug: edit-snmp-config
   id: novqte71cal8
   type: challenge
@@ -104,7 +104,7 @@ challenges:
 
     In the **Code** tab, look at the `discovery` section of _snmp-base.yaml_. There are a few important settings to consider when configuring ktranslate to automatically discover your devices:
 
-    - cidrs: the range of IP addresses ktranslate uses to discover your devices
+    - **cidrs:** the range of IP addresses ktranslate uses to discover your devices
 
     Your devices are represented by docker containers attached to the docker network `testnet`. To see the CIDR associated with `testnet`, change to the **Terminal** tab and run the following command:
 
@@ -114,7 +114,7 @@ challenges:
 
     The output lists `10.10.0.0/24` as the configured subnet. This is conveniently the same subnet that's referred to in the default configuration.
 
-    - ports: the ports that ktranslate uses to discover your devices
+    - **ports:** the ports that ktranslate uses to discover your devices
 
     The default port included in _snmp-base.yaml_ is 161. That's because the default port SNMP managers use to communicate with SNMP agents is 161.
 
@@ -126,7 +126,7 @@ challenges:
 
     Every container exposes port 161, as described by the `PORTS` column.
 
-    - default_communities: a prioritized list of community strings to discover
+    - **default_communities:** a prioritized list of community strings to discover
 
     The default community string listed in _snmp-base.yaml_ is `public`. We've conveniently configured all your devices to use the `public` community string.
 
@@ -174,7 +174,7 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 600
 - slug: send-snmp
   id: g9q0srsokort
   type: challenge
@@ -189,7 +189,7 @@ challenges:
 
       Click on the appropriate link to find or create and copy each value. You use them in the next challenges.
   assignment: |-
-    ## Update poll interval
+    ## Update the poll interval
 
     In the `global` section of _snmp-base.yaml_, update `poll_time_sec` to 30:
 
@@ -198,7 +198,7 @@ challenges:
       poll_time_sec: 30
     ```
 
-    This'll make ktranslate poll SNMP data every 30 seconds instead of five minutes, which is the default rate.
+    This makes ktranslate poll SNMP data every thirty seconds instead of every five minutes, which is the default rate. Click the "save" icon in the file tab.
 
     ## Send SNMP data to New Relic
 
@@ -247,11 +247,15 @@ challenges:
 
     Now you're sending SNMP data to your New Relic account. Next, you'll spin up a new ktranslate container for capturing flow data.
   tabs:
+  - title: Code
+    type: code
+    hostname: host
+    path: /root/snmp-base.yaml
   - title: Terminal
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 600
 - slug: send-flow-data
   id: gmy4u2kj78mj
   type: challenge
@@ -293,7 +297,7 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 300
 - slug: observe-network
   id: wyhqhrqfynkc
   type: challenge
@@ -301,7 +305,7 @@ challenges:
   teaser: Observe your network in New Relic
   notes:
   - type: text
-    contents: While you wait, we're creating a new device in your network to generate flow data for your collector to listen on.
+    contents: While you wait, we're creating a new device in your network to generate flow data for your collector to listen to.
   - type: text
     contents: If you haven't signed into [New Relic](one.newrelic.com), do that now so you're ready to monitor your network in the following challenges.
   assignment: |-
@@ -309,7 +313,7 @@ challenges:
 
     - **flow devices:** devices that channel network flow data. With a flow device entity, you can see data such as: total endpoints, packets per second, and geographical data from a request's origin.
     - **switch:** a network switch. With a switch, you can see data such as: CPU utilization, memory utilization, and errors.
-    - **router:** a network router. With a switch, you can see data such as: CPU utilization, memory utilization, and errors.
+    - **router:** a network router. With a router, you can see data such as: CPU utilization, memory utilization, and errors.
     - **Kentik default:** a network device that ktranslate monitors without knowing its type. If you have a device like this in your network, you'll either have to query the data for it manually or [contribute a custom entity definition](https://www.google.com/url?q=https://github.com/newrelic/entity-definitions&sa=D&source=editors&ust=1631118417701000&usg=AOvVaw0Osgs3c69rbuVPbgqjvjcG).
 
     These entities represent the devices in your network. Click on one to see its data:
@@ -323,7 +327,7 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 600
 - slug: add-dashboard
   id: 0whdqoxk8nml
   type: challenge
@@ -355,7 +359,7 @@ challenges:
 
     ![Update account with quickstarts](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/update-account.png)
 
-    Now that **Quickstarts** was added to your account, return to **Apps** to find it in **Your apps**:
+    Now that you added **Quickstarts** to your account, return to **Apps** to find it in **Your apps**:
 
     ![Your apps](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/your-apps.png)
 
@@ -367,11 +371,9 @@ challenges:
 
     ![Import the dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/import-dashboard.png)
 
-    Navigate to **Dashboards** to find your new dashboard:
+    Navigate to **Dashboards**. Open your dashboard to find some prebuilt charts already populated with your network device data:
 
     ![Network dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/dashboard.png)
-
-    Open your dashboard to find some prebuilt charts already populated with your network device data:
   tabs:
   - title: Website
     type: external
@@ -406,11 +408,11 @@ challenges:
 
     ![Create a policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/first-alert-policy.png)
 
-    If you already have alerts in your account, create a another:
+    If you already have alerts in your account, create another:
 
     ![Create a policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/second-alert-policy.png)
 
-    Name your policy "Network device policy", leave the incident preference as "By policy", and create your policy:
+    Name your policy "Network device policy", leave the incident preference as "By policy", and create it:
 
     ![Create policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/create-policy.png)
 
@@ -425,7 +427,7 @@ challenges:
     Name the condition "Low interface metrics polling rate" and use the following query:
 
     ```
-    SELECT latest(`kentik.ktranslate.chf.kkc.interface_metrics`.png) FROM Metric FACET device_name
+    SELECT latest(`kentik.ktranslate.chf.kkc.interface_metrics`) FROM Metric FACET device_name
     ```
 
     ![Add name and query](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/add-name-and-query.png)
@@ -457,7 +459,7 @@ challenges:
 
     ![New notification channel](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/new-channel.png)
 
-    Select email for the type and enter your email in the text field:
+    Select email for the type, enter your email in the text field, and create your channel:
 
     ![Email notification channel](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/email-channel.png)
 
@@ -486,23 +488,33 @@ challenges:
   teaser: Observe alert condition violations and respond to incidents
   notes:
   - type: text
-    contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute. Now, it's time to see what happens if one of your network devices violates that condition.
+    contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute.
+  - type: text
+    contents: You also included a signal loss threshold for when your devices stop responding altogether.
+  - type: text
+    contents: While you're waiting, we're simulating an issue in your network so that you can see how valuable these alerts are for helping you discover issues with your network devices. This simulation takes about six minutes.
   assignment: |-
     You should have received an email from New Relic that the alert condition you created in the last challenge was violated. That's because one of your network devices stopped responding for a period of time.
+
+    In the email, you can see the device that failed and the condition query that was violated. You can even acknowledge the incident right from the email. But you can also see information about the incident from the web interface.
 
     From the **Website** tab, open New Relic in an external window and click **Alerts & AI**:
 
     ![Navigate to alerts and AI](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-alerts.png)
 
-    Under **ALERTS** in the left-hand menu, click **Policies**:
+    Under **ALERTS** in the left-hand menu, click **Incidents**:
 
-    ![Navigate to policies](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-policies.png)
+    ![Navigate to policies](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-incidents.png)
 
-    Select your policy:
+    Select your incident to see more information:
 
-    ![Select your policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/select-policy.png)
+    ![Select your policy](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/incident.png)
 
-    Select your condition and see the red box representing the time where the device data violated the condition you created.
+    > **Note:** If the incident has already closed, look for it under **All incidents**.
+
+    Here, you can see that the signal from the Cisco 1941-1 router was lost for at least one minute, which violates the signal loss threshold you specified in the last challenge.
+
+    Now that you know about that router failure, you can take the appropriate steps necessary to make sure it doesn't happen again.
   tabs:
   - title: Website
     type: external
@@ -511,7 +523,7 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
+  timelimit: 900
 - slug: add-workload
   id: q6cxpwyo7kvy
   type: challenge
@@ -519,9 +531,9 @@ challenges:
   teaser: Add a workload to group your device entities
   notes:
   - type: text
-    contents: You've created a dashboard and an alert policy to monitor your data and be notified when that data looks wrong. Next, you learn of a new way to group your device entities in New Relic, called workloads.
+    contents: You've created a dashboard and an alert policy to monitor your data and be notified when that data looks wrong. In this last challenge, you learn of a new way to group your device entities in New Relic, called workloads.
   - type: text
-    contents: You use New Relic workloads to group conceptually, geographically, or physically similar entities to provide better insights into how their performing in relation to one another. In this challenge, you create a workload for your network devices.
+    contents: You use New Relic workloads to group conceptually, geographically, or physically similar entities to provide better insights into how they're performing in relation to one another. Here, you create a workload for your network devices.
   assignment: |-
     From the **Website** tab, open New Relic in an external window and click **Create a workload**:
 
@@ -535,7 +547,7 @@ challenges:
 
     ![Workload view](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/workload.png)
 
-    The workloads view provides new insights, such as a workload status, health over time, and an errors inbox.
+    The workloads view provides new insights, such as a workload status, health over time, and an errors inbox. All this shows you how your entities are connected and observe your network health in one convenient location.
   tabs:
   - title: Website
     type: external
@@ -544,5 +556,5 @@ challenges:
     type: terminal
     hostname: host
   difficulty: basic
-  timelimit: 2000
-checksum: "11176691996017936066"
+  timelimit: 600
+checksum: "6758143859874572821"
