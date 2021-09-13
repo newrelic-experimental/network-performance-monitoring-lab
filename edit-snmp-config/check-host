@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Verify that snmp-base.yaml exists
-if [ ! -f /root/snmp-base.yaml ]; then
-    fail-message "No file was found at /root/snmp-base.yaml"
+if [ $(yq e '.devices | length' snmp-base.yaml) != 14 ]; then
+    fail-message "Incorrect number of devices discovered"
 fi

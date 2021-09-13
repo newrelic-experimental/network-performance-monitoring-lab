@@ -1,6 +1,10 @@
 #!/bin/bash
+file="/root/snmp-base.yaml"
 
-# Verify that snmp-base.yaml exists
-if [ ! -f /root/snmp-base.yaml ]; then
-    fail-message "Copy snmp-base.yaml from a fresh ktranslate container"
+if [ ! -f $file ]; then
+    fail-message "snmp-base.yaml does not exist at /root"
+fi
+
+if [[ $(stat -c "%a" $file) != 646 ]]; then
+    fail-message "Incorrect permissions for snmp-base.yaml"
 fi

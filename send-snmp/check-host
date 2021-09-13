@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ $(docker container list | grep ksnmp | wc -l) != 1 ]; then
+    fail-message "No ksnmp container found"
+fi

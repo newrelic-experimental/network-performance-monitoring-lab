@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ $(docker container list | grep knetflow | wc -l) != 1 ]; then
+    fail-message "No knetflow container found"
+fi
