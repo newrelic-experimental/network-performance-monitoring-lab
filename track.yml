@@ -144,6 +144,12 @@ challenges:
         -snmp_discovery=true
     ```
 
+    > **Note:** If you have a New Relic account in the EU region, specify your region with an additional option:
+    >
+    > ```
+    > -nr_region EU
+    > ```
+
     Here, you:
 
     1. Specify the `testnet` network
@@ -223,6 +229,12 @@ challenges:
     ```
 
     > **Note:** Make sure you replace `<LICENSE_KEY>` and `<ACCOUNT_ID>` with the appropriate values. If you don't have these values on hand, read our documentation to get your [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/) and [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
+    >
+    > Also, if you have a New Relic account in the EU region, specify your region with an additional option:
+    >
+    > ```
+    > -nr_region EU
+    > ```
 
     When you create this container, you use some of the same flags you did to discover your devices. For example, you set the network (`--net=testnet`) and mount your local _snmp-base.yaml_, which now has your device metadata so that ktranslate knows how to find the devices. You also specify the format as `new_relic_metric` so the data goes to New Relic.
 
@@ -285,6 +297,12 @@ challenges:
     ```
 
     > **Note:** Make sure you replace `<LICENSE_KEY>` and `<ACCOUNT_ID>` with the appropriate values. If you don't have these values on hand, read our documentation to get your [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/) and [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
+    >
+    > Also, if you have a New Relic account in the EU region, specify your region with an additional option:
+    >
+    > ```
+    > -nr_region EU
+    > ```
 
     There are a few unique options you set for capturing flow data, such as:
 
@@ -557,4 +575,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "6758143859874572821"
+checksum: "12494956360945270006"
