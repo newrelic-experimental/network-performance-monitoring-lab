@@ -51,7 +51,7 @@ challenges:
       docker ps
       ```
   - type: text
-    contents: Kentik created ktranslate to help you find network devices, receive data, and send that data to some output. In this lab, you'll use ktranslate to instrument your network and send data to your New Relic account. Read [its documentation](https://github.com/kentik/ktranslate) to learn how it works.
+    contents: Kentik created ktranslate to help you find network devices, receive data, and send that data to some output. In this lab, you'll use ktranslate to instrument your network and send data to your New Relic account so that you can monitor your devices' health. Read [its documentation](https://github.com/kentik/ktranslate) to learn how it works.
   assignment: |-
     Before you can discover your network devices with ktranslate, you need to configure some settings.
 
@@ -144,12 +144,6 @@ challenges:
         -snmp_discovery=true
     ```
 
-    > **Note:** If you have a New Relic account in the EU region, specify your region with an additional option:
-    >
-    > ```
-    > -nr_region EU
-    > ```
-
     Here, you:
 
     1. Specify the `testnet` network
@@ -206,6 +200,18 @@ challenges:
 
     This makes ktranslate poll SNMP data every thirty seconds instead of every five minutes, which is the default rate. Click the "save" icon in the file tab.
 
+    ## Set environment variables
+
+    A few commands in this lab require your New Relic license key, account ID, and region. So, to make things easier, set the following environment variables, replacing [<LICENSE-KEY>](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [<ACCOUNT-ID>](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and `<REGION>` with real values:
+
+    ```
+    export NR_LICENSE_KEY=<LICENSE-KEY>
+    export NR_ACCOUNT_ID=<ACCOUNT-ID>
+    export NR_REGION=<REGION>  # US or EU
+    ```
+
+    With these variables set, you're prepared to poll your SNMP devices and store that data in your New Relic account. Later, you'll use that data to monitor the health of your devices.
+
     ## Send SNMP data to New Relic
 
     Now that you've discovered the SNMP-enabled devices in your network, poll those devices and send their data to your New Relic account:
@@ -213,28 +219,21 @@ challenges:
     ```
     docker run -d --name ksnmp --restart unless-stopped --net=testnet \
       -v `pwd`/snmp-base.yaml:/snmp-base.yaml \
-      -e NEW_RELIC_API_KEY=<LICENSE_KEY> \
+      -e NEW_RELIC_API_KEY=$NR_LICENSE_KEY \
       kentik/ktranslate:v2 \
         -snmp /snmp-base.yaml \
         -compression=gzip \
         -sinks=new_relic \
-        -nr_account_id=<ACCOUNT_ID> \
+        -nr_account_id=$NR_ACCOUNT_ID \
         -log_level=info \
         -metrics=jchf \
         -tee_logs=true \
         -max_flows_per_message=100 \
         -listen=0.0.0.0:8183 \
         -metalisten=0.0.0.0:8184 \
-        -format=new_relic_metric
+        -format=new_relic_metric \
+        -nr_region=$NR_REGION
     ```
-
-    > **Note:** Make sure you replace `<LICENSE_KEY>` and `<ACCOUNT_ID>` with the appropriate values. If you don't have these values on hand, read our documentation to get your [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/) and [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
-    >
-    > Also, if you have a New Relic account in the EU region, specify your region with an additional option:
-    >
-    > ```
-    > -nr_region EU
-    > ```
 
     When you create this container, you use some of the same flags you did to discover your devices. For example, you set the network (`--net=testnet`) and mount your local _snmp-base.yaml_, which now has your device metadata so that ktranslate knows how to find the devices. You also specify the format as `new_relic_metric` so the data goes to New Relic.
 
@@ -277,15 +276,15 @@ challenges:
   - type: text
     contents: Along with SNMP data, you can use ktranslate to listen for flow data from devices on your network and send it to New Relic.
   assignment: |-
-    With `ksnmp`, you're polling SNMP data from your devices and sending it to your New Relic account. Now, set up another ktranslate container to listen for network flow data:
+    With `ksnmp`, you're polling SNMP data from your devices. Now, set up another ktranslate container to listen for network flow data:
 
     ```
     docker run -d --name knetflow --restart unless-stopped --net=host \
       -v `pwd`/snmp-base.yaml:/snmp-base.yaml \
-      -e NEW_RELIC_API_KEY=<LICENSE_KEY> \
+      -e NEW_RELIC_API_KEY=$NR_LICENSE_KEY \
       kentik/ktranslate:v2 \
         -snmp /snmp-base.yaml \
-        -nr_account_id=<ACCOUNT_ID> \
+        -nr_account_id=$NR_ACCOUNT_ID \
         -metrics=jchf \
         -log_level=debug \
         -tee_logs=true \
@@ -293,16 +292,9 @@ challenges:
         -nf.source=netflow5 \
         -listen=0.0.0.0:8283 \
         -metalisten=0.0.0.0:8284 \
+        -nr_region=$NR_REGION \
         nr1.flow
     ```
-
-    > **Note:** Make sure you replace `<LICENSE_KEY>` and `<ACCOUNT_ID>` with the appropriate values. If you don't have these values on hand, read our documentation to get your [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/) and [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
-    >
-    > Also, if you have a New Relic account in the EU region, specify your region with an additional option:
-    >
-    > ```
-    > -nr_region EU
-    > ```
 
     There are a few unique options you set for capturing flow data, such as:
 
