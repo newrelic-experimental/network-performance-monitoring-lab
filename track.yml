@@ -6,7 +6,7 @@ teaser: Use ktranslate to discover your network devices, gather data, and send t
 description: |-
   ## Overview
 
-  You’re an operations engineer managing a network of SNMP-enabled devices. Your team already uses New Relic’s features for monitoring software and infrastructure, but it’s time to monitor your network devices as well.
+  You’re an operations engineer relying on a network of SNMP-enabled devices. Your team already uses New Relic’s features for monitoring software and infrastructure, but it’s time to monitor your network devices as well.
 
   In this track, you use Kentik’s ktranslate library to automatically discover your network devices, gather data, and send that data to New Relic. Then you use New Relic to monitor the health of your network.
 
@@ -42,7 +42,7 @@ challenges:
   teaser: Copy the default ktranslate configuration file from a temporary container
   notes:
   - type: text
-    contents: As an operations engineer, you manage a network of devices including switches and routers. It's critically important to monitor the health and behaviors of these devices so you can react to issues and make adjustments as needed.
+    contents: As an operations engineer, you rely on a network of devices, including switches and routers, that sometimes cause problems in your infrastructure layer. It's critically important to monitor the health and behaviors of these devices so you can react to issues and make adjustments as needed.
   - type: text
     contents: |-
       We've simulated a network of virtual devices in docker for you to engage with. You can view those devices at any time:
