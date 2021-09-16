@@ -2,13 +2,13 @@ slug: network-performance-monitoring
 id: ljugkngbqdhs
 type: track
 title: Network Performance Monitoring
-teaser: Use ktranslate to discover your network devices, gather data, and send that data to New Relic. Then use New Relic to observe your network devices with a dashboard, an alert, and a workload.
+teaser: Use ktranslate to discover your network devices, gather data, and send that data to your New Relic account. Then use New Relic to observe your network devices with a dashboard, an alert, and a workload.
 description: |-
   ## Overview
 
   You’re an operations engineer relying on a network of SNMP-enabled devices. Your team already uses New Relic’s features for monitoring software and infrastructure, but it’s time to monitor your network devices as well.
 
-  In this track, you use Kentik’s ktranslate library to automatically discover your network devices, gather data, and send that data to New Relic. Then you use New Relic to monitor the health of your network.
+  In this track, you use Kentik’s ktranslate library to automatically discover your network devices, gather data, and send that data to New Relic to correlate network performance with infrastructure, applications, and digital experiences. Then you use New Relic to monitor the health of your network.
 
   ## Objectives
 
