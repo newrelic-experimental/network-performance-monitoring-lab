@@ -400,7 +400,7 @@ challenges:
   teaser: Add alert policies to notify you when your devices have issues
   notes:
   - type: text
-    contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. However, when something goes wrong it's helpful to be notified about the issue, and a dashboard won't do that for you.
+    contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. But when you need to be notified when something goes wrong, you configure alert policies.
   - type: text
     contents: You use alerts to be notified when your data starts to show problem signs. For your network devices, you'll create an alert policy to send you an email when the poll rate for interface metrics drops too low.
   assignment: |-
@@ -567,4 +567,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "16472993457491581970"
+checksum: "13459088077231343066"
