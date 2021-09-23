@@ -55,7 +55,7 @@ challenges:
   assignment: |-
     Before you can discover your network devices with ktranslate, you need to configure some settings.
 
-    The ktranslate docker image contains a base configuration file, called [_snmp-base.yaml_](https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/advanced-config/#snmp-base-yml-template). Copy this file to your local host from a temporary container:
+    The ktranslate docker image contains a base configuration file, called [_snmp-base.yaml_](https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/advanced-config/#snmp-base-yml-template). In the **Terminal** tab, copy this file to your local host from a temporary container:
 
     ```
     docker pull kentik/ktranslate:v2
@@ -202,11 +202,17 @@ challenges:
 
     ## Set environment variables
 
-    A few commands in this lab require your New Relic license key, account ID, and region. So, to make things easier, set the following environment variables, replacing [<LICENSE-KEY>](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [<ACCOUNT-ID>](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and `<REGION>` with real values:
+    A few commands in this lab require your New Relic license key, account ID, and region. So, to make things easier, set the following environment variables, replacing [`<LICENSE-KEY>`](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [`<ACCOUNT-ID>`](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and `<REGION>` with real values:
 
     ```
     export NR_LICENSE_KEY=<LICENSE-KEY>
+    ```
+
+    ```
     export NR_ACCOUNT_ID=<ACCOUNT-ID>
+    ```
+
+    ```
     export NR_REGION=<REGION>  # US or EU
     ```
 
@@ -498,11 +504,11 @@ challenges:
   teaser: Observe alert condition violations and respond to incidents
   notes:
   - type: text
+    contents: While you're waiting, we're simulating an issue in your network so that you can see how valuable these alerts are for helping you discover issues with your network devices. This simulation takes about six minutes.
+  - type: text
     contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute.
   - type: text
     contents: You also included a signal loss threshold for when your devices stop responding altogether.
-  - type: text
-    contents: While you're waiting, we're simulating an issue in your network so that you can see how valuable these alerts are for helping you discover issues with your network devices. This simulation takes about six minutes.
   assignment: |-
     You should have received an email from New Relic that the alert condition you created in the last challenge was violated. That's because one of your network devices stopped responding for a period of time.
 
@@ -567,4 +573,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "13459088077231343066"
+checksum: "8777908339929720859"
