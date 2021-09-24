@@ -2,7 +2,7 @@ slug: network-performance-monitoring
 id: ljugkngbqdhs
 type: track
 title: Network Performance Monitoring
-teaser: Use ktranslate to discover your network devices, gather data, and send that data to your New Relic account. Then use New Relic to observe your network devices with a dashboard, an alert, and a workload.
+teaser: Use ktranslate to discover your network devices, gather data, and send that data to your New Relic account to correlate network performance with infrastructure, applications, and digital experiences. Then use New Relic to observe your network devices.
 description: |-
   ## Overview
 
@@ -225,7 +225,7 @@ challenges:
 
     When you create this container, you use some of the same flags you did to discover your devices. For example, you set the network (`--net=testnet`) and mount your local _snmp-base.yaml_, which now has your device metadata so that ktranslate knows how to find the devices. You also specify the format as `new_relic_metric` so the data goes to New Relic.
 
-    View the log stream from your new container:
+    View your new container's log stream:
 
     ```
     docker logs -f ksnmp
@@ -547,7 +547,7 @@ challenges:
 
     ![Workload view](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/workload.png)
 
-    The workloads view provides new insights, such as a workload status, health over time, and an errors inbox. All this shows you how your entities are connected and observe your network health in one convenient location.
+    The workloads view provides new insights, such as a workload status, health over time, and an errors inbox. All this shows you how your entities are connected and lets you observe your network health in one convenient location.
   tabs:
   - title: Website
     type: external
@@ -557,4 +557,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "6824979630633021035"
+checksum: "7391801744012386507"
