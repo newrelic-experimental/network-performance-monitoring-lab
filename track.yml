@@ -200,27 +200,9 @@ challenges:
 
     This makes ktranslate poll SNMP data every thirty seconds instead of every five minutes, which is the default rate. Click the "save" icon in the file tab.
 
-    ## Set environment variables
-
-    A few commands in this lab require your New Relic license key, account ID, and region. So, to make things easier, set the following environment variables, replacing [`<LICENSE-KEY>`](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [`<ACCOUNT-ID>`](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and `<REGION>` with real values:
-
-    ```
-    export NR_LICENSE_KEY=<LICENSE-KEY>
-    ```
-
-    ```
-    export NR_ACCOUNT_ID=<ACCOUNT-ID>
-    ```
-
-    ```
-    export NR_REGION=<REGION>  # US or EU
-    ```
-
-    With these variables set, you're prepared to poll your SNMP devices and store that data in your New Relic account. Later, you'll use that data to monitor the health of your devices.
-
     ## Send SNMP data to New Relic
 
-    Now that you've discovered the SNMP-enabled devices in your network, poll those devices and send their data to your New Relic account:
+    Now that you've discovered the SNMP-enabled devices in your network, poll those devices and send their data to your New Relic account. Make sure you replace [$NR_LICENSE_KEY](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [$NR_ACCOUNT_ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and $NR_REGION (either US or EU) with real values:
 
     ```
     docker run -d --name ksnmp --restart unless-stopped --net=testnet \
@@ -282,10 +264,10 @@ challenges:
   - type: text
     contents: Along with SNMP data, you can use ktranslate to listen for flow data from devices on your network and send it to New Relic.
   assignment: |-
-    With `ksnmp`, you're polling SNMP data from your devices. Now, set up another ktranslate container to listen for network flow data:
+    With `ksnmp`, you're polling SNMP data from your devices. Now, set up another ktranslate container to listen for network flow data. Make sure you replace [$NR_LICENSE_KEY](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [$NR_ACCOUNT_ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and $NR_REGION (either US or EU) with real values:
 
     ```
-    docker run -d --name knetflow --restart unless-stopped --net=host \
+    docker run -d --name knetflow --restart unless-stopped --net=testnet \
       -v `pwd`/snmp-base.yaml:/snmp-base.yaml \
       -e NEW_RELIC_API_KEY=$NR_LICENSE_KEY \
       kentik/ktranslate:v2 \
@@ -331,6 +313,8 @@ challenges:
     - **switch:** a network switch. With a switch, you can see data such as: CPU utilization, memory utilization, and errors.
     - **router:** a network router. With a router, you can see data such as: CPU utilization, memory utilization, and errors.
     - **Kentik default:** a network device that ktranslate monitors without knowing its type. If you have a device like this in your network, you'll either have to query the data for it manually or [contribute a custom entity definition](https://www.google.com/url?q=https://github.com/newrelic/entity-definitions&sa=D&source=editors&ust=1631118417701000&usg=AOvVaw0Osgs3c69rbuVPbgqjvjcG).
+
+    > **Note:** It may take a few minutes for the entities to show in New Relic.
 
     These entities represent the devices in your network. Click on one to see its data:
 
@@ -573,4 +557,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "8777908339929720859"
+checksum: "6824979630633021035"
