@@ -137,11 +137,13 @@ challenges:
     Leave the default settings and switch to the **Terminal** tab. Start a new ktranslate container to discover your devices:
 
     ```
-    docker run -ti --rm --net=testnet \
+    docker run -ti --name ktranslate-discovery --rm --net=testnet \
+      --user `id -u`:`id -g` \
       -v `pwd`/snmp-base.yaml:/snmp-base.yaml \
       kentik/ktranslate:v2 \
-        -snmp /snmp-base.yaml \
-        -snmp_discovery=true
+      -snmp /snmp-base.yaml \
+      -log_level info \
+      -snmp_discovery=true
     ```
 
     Here, you:
@@ -341,37 +343,31 @@ challenges:
   assignment: |-
     Instead of querying and creating visualizations for your network devices by hand, you're going to use a dashboard that we created for you.
 
-    From the **Website** tab, open New Relic in an external window and go to **Apps**:
+    From the **Website** tab, open New Relic in an external window and go to **Instant Observability**:
 
-    ![Navigate to Apps](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-apps.png)
+    ![Navigate to Apps](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/nav-to-io.png)
 
-    In the **New Relic One catalog** click the **Quickstarts** library:
+    In the catalog, find **Network Routers and Switches**:
 
-    ![Click the Quickstarts library](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/click-quickstarts.png)
+    ![Click the Quickstarts library](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/network-routers-and-switches.png)
 
-    Next, click **Add this app**:
+    Next, click **Install this quickstart**:
 
-    ![Click the quickstarts library](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/add-this-app.png)
+    ![Click the quickstarts library](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/install-this-quickstart.png)
 
     > **Note:** You may need to ask an administrator for the **Nerdpack modify** user privilege to do this. For more information on basic user limitations, [read our documentation](https://developer.newrelic.com/build-apps/permission-manage-apps/#basic-users-1).
 
-    Select your account and submit the change:
+    Because you're already collecting SNMP data, choose **Skip this step**:
 
-    ![Update account with quickstarts](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/update-account.png)
+    ![Update account with quickstarts](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/skip-this-step.png)
 
-    Now that you added **Quickstarts** to your account, return to **Apps** to find it in **Your apps**:
+    We deploy your quickstart automatically.
 
-    ![Your apps](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/your-apps.png)
+    Click **See your data**:
 
-    Click on **Quickstarts**, search for "Network - Routers and Switches", and click on the dashboard:
+    ![See your data](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/see-your-data.png)
 
-    ![Find network dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/network-dashboard.png)
-
-    Import the dashboard:
-
-    ![Import the dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/import-dashboard.png)
-
-    Navigate to **Dashboards**. Open your dashboard to find some prebuilt charts already populated with your network device data:
+     Open your dashboard to find some prebuilt charts already populated with your network device data:
 
     ![Network dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/dashboard.png)
   tabs:
@@ -557,4 +553,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "14902816153443450097"
+checksum: "522582034075845802"
