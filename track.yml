@@ -200,7 +200,7 @@ challenges:
       poll_time_sec: 30
     ```
 
-    This makes ktranslate poll SNMP data every thirty seconds instead of every five minutes, which is the default rate. Click the "save" icon in the file tab.
+    This makes ktranslate poll SNMP data every thirty seconds. Click the "save" icon in the file tab.
 
     ## Send SNMP data to New Relic
 
@@ -237,12 +237,9 @@ challenges:
 
     ```
     ...
-    2021-09-07T18:21:57.877 ktranslate [Info] KTranslate>Cisco Catalyst-6 SNMP interface metric poll - found metrics for 59 interfaces.
-    2021-09-07T18:21:57.895 ktranslate [Info] KTranslate>Cisco Catalyst-2 SNMP interface metric poll - found metrics for 59 interfaces.
-    2021-09-07T18:21:57.905 ktranslate [Info] KTranslate>Cisco Catalyst-1 SNMP interface metric poll - found metrics for 59 interfaces.
-    2021-09-07T18:21:58.042 ktranslate [Info] KTranslate>Cisco Catalyst-3 SNMP interface metric poll - found metrics for 59 interfaces.
-    2021-09-07T18:21:58.229 ktranslate [Info] KTranslate>Cisco Catalyst-7 SNMP interface metric poll - found metrics for 59 interfaces.
-    2021-09-07T18:21:58.249 ktranslate [Info] KTranslate>Cisco Catalyst-5 SNMP interface metric poll - found metrics for 59 interfaces.
+    2021-10-18T14:52:05.426 ktranslate [Info] KTranslate>Cisco 1941-1 SNMP interface metric poll - found metrics for 6 interfaces.
+    2021-10-18T14:52:07.486 ktranslate [Info] KTranslate>isp-gw SNMP interface metric poll - found metrics for 0 interfaces.
+    2021-10-18T14:52:07.815 ktranslate [Info] KTranslate>Cisco Catalyst SNMP interface metric poll - found metrics for 59 interfaces.
     ...
     ```
 
@@ -315,6 +312,8 @@ challenges:
     - **switch:** a network switch. With a switch, you can see data such as: CPU utilization, memory utilization, and errors.
     - **router:** a network router. With a router, you can see data such as: CPU utilization, memory utilization, and errors.
     - **Kentik default:** a network device that ktranslate monitors without knowing its type. If you have a device like this in your network, you'll either have to query the data for it manually or [contribute a custom entity definition](https://www.google.com/url?q=https://github.com/newrelic/entity-definitions&sa=D&source=editors&ust=1631118417701000&usg=AOvVaw0Osgs3c69rbuVPbgqjvjcG).
+
+    ![Network entities](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/network-entities.png)
 
     > **Note:** It may take a few minutes for the entities to show in New Relic.
 
@@ -551,4 +550,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "5800187607365421940"
+checksum: "11594572614563472210"
