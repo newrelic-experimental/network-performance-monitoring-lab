@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# if [ $(yq e '.devices | length' snmp-base.yaml) != 14 ]; then
-#     fail-message "Incorrect number of devices discovered"
-# fi
+if [ $(yq e '.devices | length' snmp-base.yaml) != 3 ]; then
+    fail-message "Incorrect number of devices discovered"
+fi

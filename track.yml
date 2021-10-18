@@ -163,10 +163,10 @@ challenges:
     The end of the output tells you how many devices ktranslate discovered:
 
     ```
-    KTranslate Adding 14 new SNMP devices to the configuration. 0 replaced from 14.
+    KTranslate Adding 3 new SNMP devices to the configuration. 0 replaced from 3.
     ```
 
-    Open the **Code** tab to see fourteen new device configurations in the `devices` section of _snmp-base.yaml_.
+    Open the **Code** tab to see the new device configurations in the `devices` section of _snmp-base.yaml_.
   tabs:
   - title: Code
     type: code
@@ -355,8 +355,6 @@ challenges:
 
     ![Click the quickstarts library](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/install-this-quickstart.png)
 
-    > **Note:** You may need to ask an administrator for the **Nerdpack modify** user privilege to do this. For more information on basic user limitations, [read our documentation](https://developer.newrelic.com/build-apps/permission-manage-apps/#basic-users-1).
-
     Because you're already collecting SNMP data, choose **Skip this step**:
 
     ![Update account with quickstarts](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/skip-this-step.png)
@@ -367,7 +365,7 @@ challenges:
 
     ![See your data](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/see-your-data.png)
 
-     Open your dashboard to find some prebuilt charts already populated with your network device data:
+    This opens your dashboard where you find some prebuilt charts already populated with your network device data:
 
     ![Network dashboard](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/dashboard.png)
   tabs:
@@ -553,4 +551,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "522582034075845802"
+checksum: "5800187607365421940"

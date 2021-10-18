@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ip=$(docker container inspect cisco-router-1 | jq -r .[0].NetworkSettings.Networks.testnet.IPAMConfig.IPv4Address)
-docker rm -f cisco-router-1
+ip=$(docker container inspect cisco-router | jq -r .[0].NetworkSettings.Networks.testnet.IPAMConfig.IPv4Address)
+docker rm -f cisco-router
 
 sleep 6m
 
-docker run -d --name=cisco-router-1 --ip=$ip --restart=always --network=testnet --privileged -v /:/rootfs:ro -v /etc/localtime:/etc/localtime:ro -v /home/packer/network-performance-monitoring-instruqt-packer/files/cisco-router-1:/usr/local/snmpsim/data tandrup/snmpsim
+docker run -d --name=cisco-router --ip=$ip --restart=always --network=testnet --privileged -v /:/rootfs:ro -v /etc/localtime:/etc/localtime:ro -v /home/packer/network-performance-monitoring-instruqt-packer/files/cisco-router:/usr/local/snmpsim/data tandrup/snmpsim
