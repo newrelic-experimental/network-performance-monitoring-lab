@@ -532,7 +532,7 @@ challenges:
 
     ![New workload](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/new-workload.png)
 
-    Name your workload, select all 15 entities that represent devices on your network, and click **Create a workload**:
+    Name your workload, select all the entities that represent devices on your network, and click **Create a workload**:
 
     ![Create a workload](https://raw.githubusercontent.com/newrelic-experimental/network-performance-monitoring-lab/main/assets/create-workload.png)
 
@@ -550,4 +550,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "11594572614563472210"
+checksum: "7172134317364075417"
