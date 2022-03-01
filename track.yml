@@ -2,7 +2,10 @@ slug: network-performance-monitoring
 id: ljugkngbqdhs
 type: track
 title: Network Performance Monitoring
-teaser: Use ktranslate to discover your network devices, gather data, and send that data to your New Relic account to correlate network performance with infrastructure, applications, and digital experiences. Then use New Relic to observe your network devices.
+teaser: Use ktranslate to discover your network devices, gather data, and send that
+  data to your New Relic account to correlate network performance with infrastructure,
+  applications, and digital experiences. Then use New Relic to observe your network
+  devices.
 description: |-
   ## Overview
 
@@ -42,7 +45,10 @@ challenges:
   teaser: Copy the default ktranslate configuration file from a temporary container
   notes:
   - type: text
-    contents: As an operations engineer, you rely on a network of devices, including switches and routers, that sometimes cause problems in your infrastructure layer. It's critically important to monitor the health and behaviors of these devices so you can react to issues and make adjustments as needed.
+    contents: As an operations engineer, you rely on a network of devices, including
+      switches and routers, that sometimes cause problems in your infrastructure layer.
+      It's critically important to monitor the health and behaviors of these devices
+      so you can react to issues and make adjustments as needed.
   - type: text
     contents: |-
       We've simulated a network of virtual devices in docker for you to engage with. You can view those devices at any time:
@@ -51,7 +57,11 @@ challenges:
       docker ps
       ```
   - type: text
-    contents: Kentik created ktranslate to help you find network devices, receive data, and send that data to some output. In this lab, you'll use ktranslate to instrument your network and send data to your New Relic account so that you can monitor your devices' health. Read [its documentation](https://github.com/kentik/ktranslate) to learn how it works.
+    contents: Kentik created ktranslate to help you find network devices, receive
+      data, and send that data to some output. In this lab, you'll use ktranslate
+      to instrument your network and send data to your New Relic account so that you
+      can monitor your devices' health. Read [its documentation](https://github.com/kentik/ktranslate)
+      to learn how it works.
   assignment: |-
     Before you can discover your network devices with ktranslate, you need to configure some settings.
 
@@ -98,7 +108,9 @@ challenges:
   teaser: Discover your devices with ktranslate
   notes:
   - type: text
-    contents: With _snmp-base.yaml_, you configure different aspects of ktranslate functionality. Read our [documentation](https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/advanced-config/) to familiarize yourself with its options.
+    contents: With _snmp-base.yaml_, you configure different aspects of ktranslate
+      functionality. Read our [documentation](https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/advanced-config/)
+      to familiarize yourself with its options.
   assignment: |-
     ## Review your settings
 
@@ -184,7 +196,8 @@ challenges:
   teaser: Use ktranslate to send SNMP data to your New Relic account
   notes:
   - type: text
-    contents: You can use ktranslate to poll SNMP data from devices on your network and send that data to New Relic.
+    contents: You can use ktranslate to poll SNMP data from devices on your network
+      and send that data to New Relic.
   - type: text
     contents: |-
       To do so, you need your [account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/) and a [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
@@ -261,7 +274,8 @@ challenges:
   teaser: Use ktranslate to send flow data to your New Relic account
   notes:
   - type: text
-    contents: Along with SNMP data, you can use ktranslate to listen for flow data from devices on your network and send it to New Relic.
+    contents: Along with SNMP data, you can use ktranslate to listen for flow data
+      from devices on your network and send it to New Relic.
   assignment: |-
     With `ksnmp`, you're polling SNMP data from your devices. Now, set up another ktranslate container to listen for network flow data. Make sure you replace [$NR_LICENSE_KEY](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key), [$NR_ACCOUNT_ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/), and $NR_REGION (either US or EU) with real values:
 
@@ -302,9 +316,11 @@ challenges:
   teaser: Observe your network in New Relic
   notes:
   - type: text
-    contents: While you wait, we're creating a new device in your network to generate flow data for your collector to listen to.
+    contents: While you wait, we're creating a new device in your network to generate
+      flow data for your collector to listen to.
   - type: text
-    contents: If you haven't signed into [New Relic](one.newrelic.com), do that now so you're ready to monitor your network in the following challenges.
+    contents: If you haven't signed into [New Relic](one.newrelic.com), do that now
+      so you're ready to monitor your network in the following challenges.
   assignment: |-
     From the **Website** tab, open New Relic in an external window. At the bottom of the New Relic entity explorer, under **Network**, you'll see the following entities:
 
@@ -336,9 +352,13 @@ challenges:
   teaser: Add a dashboard to monitor your network
   notes:
   - type: text
-    contents: New Relic is a programmable platform with a catalog of apps and custom visualizations you can add to your account. You can even [create some yourself](https://developer.newrelic.com/build-apps/build-hello-world-app/)!
+    contents: New Relic is a programmable platform with a catalog of apps and custom
+      visualizations you can add to your account. You can even [create some yourself](https://developer.newrelic.com/build-apps/build-hello-world-app/)!
   - type: text
-    contents: One package of useful tools is called **Quickstarts**, which contains a bunch of dashboards created by New Relic to help you hit the ground running with data visualizations. You'll add one of these to your account in this challenge to monitor your network devices.
+    contents: One package of useful tools is called **Quickstarts**, which contains
+      a bunch of dashboards created by New Relic to help you hit the ground running
+      with data visualizations. You'll add one of these to your account in this challenge
+      to monitor your network devices.
   assignment: |-
     Instead of querying and creating visualizations for your network devices by hand, you're going to use a dashboard that we created for you.
 
@@ -383,9 +403,14 @@ challenges:
   teaser: Add alert policies to notify you when your devices have issues
   notes:
   - type: text
-    contents: A dashboard is a great way for you to collect data from all your network devices in one place. It lets you visualize and filter your device data in interesting ways. But when you need to be notified when something goes wrong, you configure alert policies.
+    contents: A dashboard is a great way for you to collect data from all your network
+      devices in one place. It lets you visualize and filter your device data in interesting
+      ways. But when you need to be notified when something goes wrong, you configure
+      alert policies.
   - type: text
-    contents: You use alerts to be notified when your data starts to show problem signs. For your network devices, you'll create an alert policy to send you an email when the poll rate for interface metrics drops too low.
+    contents: You use alerts to be notified when your data starts to show problem
+      signs. For your network devices, you'll create an alert policy to send you an
+      email when the poll rate for interface metrics drops too low.
   assignment: |-
     ## Create an alert condition
 
@@ -481,11 +506,15 @@ challenges:
   teaser: Observe alert condition violations and respond to incidents
   notes:
   - type: text
-    contents: While you're waiting, we're simulating an issue in your network so that you can see how valuable these alerts are for helping you discover issues with your network devices. This simulation takes about six minutes.
+    contents: While you're waiting, we're simulating an issue in your network so that
+      you can see how valuable these alerts are for helping you discover issues with
+      your network devices. This simulation takes about six minutes.
   - type: text
-    contents: You've set up an alert in New Relic to notify you when the interface metric polling rate drops below 0.01 for over one minute.
+    contents: You've set up an alert in New Relic to notify you when the interface
+      metric polling rate drops below 0.01 for over one minute.
   - type: text
-    contents: You also included a signal loss threshold for when your devices stop responding altogether.
+    contents: You also included a signal loss threshold for when your devices stop
+      responding altogether.
   assignment: |-
     You should have received an email from New Relic that the alert condition you created in the last challenge was violated. That's because one of your network devices stopped responding for a period of time.
 
@@ -524,9 +553,13 @@ challenges:
   teaser: Add a workload to group your device entities
   notes:
   - type: text
-    contents: You've created a dashboard and an alert policy to monitor your data and be notified when that data looks wrong. In this last challenge, you learn of a new way to group your device entities in New Relic, called workloads.
+    contents: You've created a dashboard and an alert policy to monitor your data
+      and be notified when that data looks wrong. In this last challenge, you learn
+      of a new way to group your device entities in New Relic, called workloads.
   - type: text
-    contents: You use New Relic workloads to group conceptually, geographically, or physically similar entities to provide better insights into how they're performing in relation to one another. Here, you create a workload for your network devices.
+    contents: You use New Relic workloads to group conceptually, geographically, or
+      physically similar entities to provide better insights into how they're performing
+      in relation to one another. Here, you create a workload for your network devices.
   assignment: |-
     From the **Website** tab, open New Relic in an external window and click **Create a workload**:
 
@@ -550,4 +583,4 @@ challenges:
     hostname: host
   difficulty: basic
   timelimit: 600
-checksum: "7172134317364075417"
+checksum: "15446976770550141477"
